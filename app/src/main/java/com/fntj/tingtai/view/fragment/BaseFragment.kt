@@ -1,4 +1,4 @@
-package com.fntj.tingtai.view.frament
+package com.fntj.tingtai.view.fragment
 
 import android.app.Activity
 import android.os.Bundle
@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
  * @function 为我们所有的fragment提供公共的行为或事件
  */
 open class BaseFragment : Fragment() {
-    protected var mContext: Activity? = null
+    protected open var mContext: Activity? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

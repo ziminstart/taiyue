@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">tingtai</string>
+
+    <string name="class_text">班级</string>
+    <string name="question_bank_text">题库</string>
+    <string name="mine_text">我的</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
