@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 29
@@ -22,7 +21,9 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.2.0'
+    //http请求
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
-    // https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
+    //fastjson
+    implementation 'com.alibaba:fastjson:1.2.73'
 
 }

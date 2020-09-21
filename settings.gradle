@@ -1,2 +1,2 @@
-include ':app', ':injectsdk'
+include ':app', ':injectsdk',':JWSocket'
 rootProject.name = "tingtai"
