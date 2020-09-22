@@ -3,8 +3,142 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
+             android:background="@color/main_background"
              tools:context=".view.fragment.ClassFragment">
 
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
+        <!--头部的background-->
+        <RelativeLayout
+                android:background="@mipmap/header_background_class_fgt"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_115dp"
+                tools:ignore="UselessParent">
+            <!-- 头像,昵称 -->
+            <LinearLayout
+                    android:gravity="center_vertical|right"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_35dp"
+                    android:layout_marginTop="@dimen/dp_35dp"
+                    tools:ignore="RtlHardcoded,UseCompoundDrawables,UselessLeaf">
+                <!-- 昵称  -->
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/sp_13"
+                        android:text="@string/nick_name"
+                        android:textColor="@color/white"/>
+
+                <!-- 头像  -->
+                <ImageView
+                        android:layout_width="@dimen/dp_35dp"
+                        android:layout_height="@dimen/dp_35dp"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:layout_marginEnd="@dimen/dp_35dp"
+                        android:src="@mipmap/icon_photo"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <!--功能控件-->
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/dp_19"
+                android:layout_marginBottom="@dimen/dp_19"
+                android:layout_marginStart="@dimen/dp_50"
+                android:layout_marginEnd="@dimen/dp_50">
+            <ImageView
+                    android:id="@+id/class_notification_image_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:src="@mipmap/icon_photo"
+                    android:contentDescription="@string/TODO"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/class_notification_text"
+                    android:textSize="@dimen/sp_10"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:layout_below="@+id/class_notification_image_view"/>
+
+            <ImageView
+                    android:id="@+id/material_download_image_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:src="@mipmap/icon_photo"
+                    android:contentDescription="@string/TODO"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/material_download_text"
+                    android:textSize="@dimen/sp_10"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:layout_below="@+id/material_download_image_view"/>
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:src="@mipmap/icon_photo"
+                    android:contentDescription="@string/TODO"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/material_download_text"
+                    android:textSize="@dimen/sp_10"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:layout_below="@+id/material_download_image_view"/>
+
+        </RelativeLayout>
+
+        <!--群聊控件 -->
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_100"
+                android:layout_marginStart="@dimen/dp_18"
+                android:layout_marginEnd="@dimen/dp_18"
+                android:background="@mipmap/group_chat_background_class_fgt">
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerInParent="true">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/class_activity_title"
+                        android:textSize="@dimen/sp_16"
+                        android:textColor="@color/black_19"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="@dimen/dp_8"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/class_activity_info"
+                        android:textSize="@dimen/sp_11"
+                        android:textColor="@color/black_19"
+                        android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <!-- 老师列表 -->
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+    </LinearLayout>
 
 
 </FrameLayout>

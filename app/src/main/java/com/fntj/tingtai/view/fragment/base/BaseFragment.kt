@@ -1,4 +1,4 @@
-package com.fntj.tingtai.view.fragment
+package com.fntj.tingtai.view.fragment.base
 
 import android.app.Activity
 import android.os.Bundle

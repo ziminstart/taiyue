@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.fntj.tingtai.R
 import com.fntj.tingtai.socket.cilent.JWebSocketClient
+import com.fntj.tingtai.view.fragment.base.BaseFragment
 import org.java_websocket.handshake.ServerHandshake
 import java.net.URI
 
@@ -20,7 +21,7 @@ class ClassFragment : BaseFragment(), View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mContext = activity
         mContextView = inflater.inflate(R.layout.fragment_class_layout, container, false)
-        initSocket()
+//        initSocket()
         return mContextView
     }
 

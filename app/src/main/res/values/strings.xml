@@ -4,7 +4,13 @@
     <string name="class_text">班级</string>
     <string name="question_bank_text">题库</string>
     <string name="mine_text">我的</string>
+    <string name="nick_name">韩梅梅</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="class_notification_text">班级通知</string>
+    <string name="TODO">todo</string>
+    <string name="material_download_text">资料下载</string>
+    <string name="class_activity_title">班级群通知</string>
+    <string name="class_activity_info">班级答疑活动</string>
 
 </resources>
