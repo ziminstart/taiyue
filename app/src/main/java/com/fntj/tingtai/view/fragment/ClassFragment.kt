@@ -5,10 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.fntj.tingtai.R
-import com.fntj.tingtai.socket.cilent.JWebSocketClient
+import com.fntj.tingtai.api.BaseApi
+import com.fntj.tingtai.sdk.http.CommonOkHttpClient
+import com.fntj.tingtai.sdk.http.listener.DisposeDataHandle
+import com.fntj.tingtai.sdk.http.listener.DisposeDataListener
+import com.fntj.tingtai.sdk.http.request.CommonRequest
+import com.fntj.tingtai.sdk.http.request.RequestParams
+import com.fntj.tingtai.sdk.http.response.CommonJsonCallback
 import com.fntj.tingtai.view.fragment.base.BaseFragment
-import org.java_websocket.handshake.ServerHandshake
-import java.net.URI
+import kotlinx.android.synthetic.main.fragment_class_layout.*
 
 /**
  * @author 恒利
@@ -21,42 +26,44 @@ class ClassFragment : BaseFragment(), View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mContext = activity
         mContextView = inflater.inflate(R.layout.fragment_class_layout, container, false)
-//        initSocket()
         return mContextView
     }
 
+    /**
+     * view已经创建完成了
+     */
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        group_chat_relative_layout.setOnClickListener(this)
+        initDates()
+    }
 
+    /**
+     * 加载数据
+     */
+    private fun initDates() {
+        val mMap = HashMap<String,String>()
+        mMap.put("dataKey","z5wh033c7i8")
+        mMap.put("userId","88888888888")
+        mMap.put("mobile","18210568221")
+
+        CommonOkHttpClient.sendRequest(
+            CommonRequest.createPostRequest(BaseApi.HOME_DATA, RequestParams()),
+            CommonJsonCallback(DisposeDataHandle(object : DisposeDataListener {
+                override fun onSuccess(responseObj: Any?) {
+                    println("请求成功")
+                }
+
+                override fun onFailure(reasonObj: Any?) {
+                    println("请求失败")
+                }
+            }))
+        )
+    }
 
     /**
      * 初始化java-websocket
      */
-    private fun initSocket() {
-        println("开始连接socket")
-        val uri = URI.create("ws://192.168.0.38:9999")
-        val client : JWebSocketClient = object : JWebSocketClient(uri){
-            override fun onOpen(handshakedata: ServerHandshake?) {
-                super.onOpen(handshakedata)
-                print("连接成功")
-            }
-
-            override fun onMessage(message: String?) {
-                super.onMessage(message)
-                print("接收到消息")
-            }
-
-            override fun onClose(code: Int, reason: String?, remote: Boolean) {
-                super.onClose(code, reason, remote)
-                print("关闭")
-            }
-
-            override fun onError(ex: Exception?) {
-                super.onError(ex)
-                print("错误")
-            }
-        }
-        client.connectBlocking()
-    }
-
     override fun onStart() {
         super.onStart()
     }
@@ -78,7 +85,7 @@ class ClassFragment : BaseFragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        TODO("Not yet implemented")
     }
+
 
 }

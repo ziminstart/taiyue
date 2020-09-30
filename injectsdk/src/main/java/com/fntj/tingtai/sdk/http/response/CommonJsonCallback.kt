@@ -2,16 +2,16 @@ package com.fntj.tingtai.sdk.http.response
 
 import android.os.Handler
 import android.os.Looper
+import com.alibaba.fastjson.JSON
 import com.fntj.tingtai.sdk.http.exception.OkHttpException
 import com.fntj.tingtai.sdk.http.listener.DisposeDataHandle
 import com.fntj.tingtai.sdk.http.listener.DisposeDataListener
 import com.fntj.tingtai.sdk.http.listener.DisposeHandleCookieListener
-import com.fntj.tingtai.sdk.utils.ResponseEntityToModule
+import com.fntj.tingtai.sdk.utils.ResultUtil
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Headers
 import okhttp3.Response
-import org.json.JSONObject
 import java.io.IOException
 import java.util.*
 
@@ -81,11 +81,11 @@ class CommonJsonCallback(handle: DisposeDataHandle) : Callback {
             /**
              * 协议确定后看这里如何修改
              */
-            val result = JSONObject(responseObj.toString())
+            val parseObject = JSON.parseObject(responseObj.toString())
             if (mClass == null) {
-                mListener!!.onSuccess(result)
+                mListener!!.onSuccess(parseObject)
             } else {
-                val obj: Any = ResponseEntityToModule.parseJsonObjectToModule(result, mClass)
+                val obj: Any = JSON.parseObject(responseObj.toString(), mClass)
                 mListener!!.onSuccess(obj)
             }
         } catch (e: Exception) {

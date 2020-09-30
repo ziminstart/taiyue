@@ -1,13 +1,10 @@
 package com.fntj.tingtai.activity
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import com.fntj.tingtai.R
 import com.fntj.tingtai.activity.base.BaseActivity
-import com.fntj.tingtai.socket.cilent.JWebSocketClient
 import com.fntj.tingtai.view.fragment.ClassFragment
-import java.net.URI
 
 
 /**

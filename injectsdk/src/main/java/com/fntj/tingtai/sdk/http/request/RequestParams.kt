@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap
  * @author vision
  * @function 封装所有的请求参数到HashMap中
  */
-class RequestParams @JvmOverloads constructor(source: Map<String?, String?>? = null as Map<String?, String?>?) {
+class RequestParams @JvmOverloads constructor(source: Map<String?, String?>? = null) {
     open var urlParams = ConcurrentHashMap<String, String>()
     open var fileParams = ConcurrentHashMap<String, Any>()
 
@@ -24,8 +24,7 @@ class RequestParams @JvmOverloads constructor(source: Map<String?, String?>? = n
         init {
             put(key, value)
         }
-    }) {
-    }
+    })
 
     /**
      * Adds a key/value string pair to the request.

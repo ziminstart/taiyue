@@ -36,8 +36,6 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     implementation project(':injectsdk')
-    implementation project(':JWSocket')
-
     //IM
     implementation 'org.java-websocket:Java-WebSocket:1.5.1'
     //网络请求

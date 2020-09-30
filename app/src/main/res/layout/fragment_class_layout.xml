@@ -103,6 +103,7 @@
 
         <!--群聊控件 -->
         <RelativeLayout
+                android:id="@+id/group_chat_relative_layout"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_100"
                 android:layout_marginStart="@dimen/dp_18"
