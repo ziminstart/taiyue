@@ -4,13 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.alibaba.fastjson.JSON
 import com.fntj.tingtai.R
 import com.fntj.tingtai.api.BaseApi
 import com.fntj.tingtai.sdk.http.CommonOkHttpClient
 import com.fntj.tingtai.sdk.http.listener.DisposeDataHandle
 import com.fntj.tingtai.sdk.http.listener.DisposeDataListener
 import com.fntj.tingtai.sdk.http.request.CommonRequest
-import com.fntj.tingtai.sdk.http.request.RequestParams
 import com.fntj.tingtai.sdk.http.response.CommonJsonCallback
 import com.fntj.tingtai.view.fragment.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_class_layout.*
@@ -42,20 +43,27 @@ class ClassFragment : BaseFragment(), View.OnClickListener {
      * 加载数据
      */
     private fun initDates() {
-        val mMap = HashMap<String,String>()
-        mMap.put("dataKey","z5wh033c7i8")
-        mMap.put("userId","88888888888")
-        mMap.put("mobile","18210568221")
+        val mMap = HashMap<String, String>()
+        mMap.put("dataKey", "z5wh033c7i8")
+        mMap.put("userId", "88888888888")
+        mMap.put("mobile", "18210568221")
 
         CommonOkHttpClient.sendRequest(
-            CommonRequest.createPostRequest(BaseApi.HOME_DATA, RequestParams()),
+            CommonRequest.createPostRequest(BaseApi.HOME_DATA, mMap),
             CommonJsonCallback(DisposeDataHandle(object : DisposeDataListener {
                 override fun onSuccess(responseObj: Any?) {
-                    println("请求成功")
+                    val parseObj = JSON.parseObject(responseObj.toString())
+                    if (parseObj["success"] as Boolean) {
+                        println("请求成功")
+                    } else {
+                        if (parseObj["status"].toString().toInt() == 11001) {
+                            Toast.makeText(context, parseObj["message"] as String, Toast.LENGTH_SHORT).show();
+                        }
+                    }
                 }
 
                 override fun onFailure(reasonObj: Any?) {
-                    println("请求失败")
+                    println("请求出错")
                 }
             }))
         )

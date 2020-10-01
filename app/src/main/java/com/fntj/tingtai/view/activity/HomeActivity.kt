@@ -1,4 +1,4 @@
-package com.fntj.tingtai.activity
+package com.fntj.tingtai.view.activity
 
 import android.os.Bundle
 import android.view.View

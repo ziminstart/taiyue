@@ -41,5 +41,5 @@ dependencies {
     //网络请求
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-
+    implementation 'com.alibaba:fastjson:1.2.73'
 }

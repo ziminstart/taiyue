@@ -8,8 +8,8 @@ package com.fntj.tingtai.api
 object BaseApi {
 
     //本地环境
-    val BASE_HOST: String = "192.168.0.25"
-    private val BASE_URL: String = "http://192.168.0.25:3333/"
+    val BASE_HOST: String = "192.168.124.243"
+    private val BASE_URL: String = "http://192.168.124.243:3333/"
 
     /**
      * 首页
