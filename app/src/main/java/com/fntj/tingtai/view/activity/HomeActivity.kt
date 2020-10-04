@@ -3,7 +3,7 @@ package com.fntj.tingtai.view.activity
 import android.os.Bundle
 import android.view.View
 import com.fntj.tingtai.R
-import com.fntj.tingtai.activity.base.BaseActivity
+import com.fntj.tingtai.view.activity.base.BaseActivity
 import com.fntj.tingtai.view.fragment.ClassFragment
 
 

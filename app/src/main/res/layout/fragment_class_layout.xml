@@ -136,6 +136,7 @@
 
         <!-- 老师列表 -->
         <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/teacher_list_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 

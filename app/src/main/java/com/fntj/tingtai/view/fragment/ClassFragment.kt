@@ -5,16 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.fastjson.JSON
+import com.alibaba.fastjson.JSONArray
+import com.alibaba.fastjson.TypeReference
 import com.fntj.tingtai.R
 import com.fntj.tingtai.api.BaseApi
+import com.fntj.tingtai.bean.Teacher
 import com.fntj.tingtai.sdk.http.CommonOkHttpClient
 import com.fntj.tingtai.sdk.http.listener.DisposeDataHandle
 import com.fntj.tingtai.sdk.http.listener.DisposeDataListener
 import com.fntj.tingtai.sdk.http.request.CommonRequest
 import com.fntj.tingtai.sdk.http.response.CommonJsonCallback
 import com.fntj.tingtai.view.fragment.base.BaseFragment
+import com.fntj.tingtai.view.item.TeacherItemAdapter
 import kotlinx.android.synthetic.main.fragment_class_layout.*
+import java.util.*
+import kotlin.collections.HashMap
 
 /**
  * @author 恒利
@@ -36,6 +43,10 @@ class ClassFragment : BaseFragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         group_chat_relative_layout.setOnClickListener(this)
+        val linearLayoutManager = LinearLayoutManager(mContext)
+        linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        teacher_list_recycler_view.layoutManager = linearLayoutManager
+        //设置数据
         initDates()
     }
 
@@ -47,6 +58,7 @@ class ClassFragment : BaseFragment(), View.OnClickListener {
         mMap.put("dataKey", "z5wh033c7i8")
         mMap.put("userId", "88888888888")
         mMap.put("mobile", "18210568221")
+        mMap.put("source", "BANWOXUE")
 
         CommonOkHttpClient.sendRequest(
             CommonRequest.createPostRequest(BaseApi.HOME_DATA, mMap),
@@ -54,7 +66,15 @@ class ClassFragment : BaseFragment(), View.OnClickListener {
                 override fun onSuccess(responseObj: Any?) {
                     val parseObj = JSON.parseObject(responseObj.toString())
                     if (parseObj["success"] as Boolean) {
-                        println("请求成功")
+                        val entity = JSON.parseObject(parseObj["entity"]?.toString(),
+                            object : TypeReference<Map<String, String>>() {})
+                        val featureListJson = entity["featureList"]
+                        val featureList = JSON.parseArray(featureListJson)
+                        val teacherListJson = entity["teacherList"]
+                        val teacherList: List<Teacher> = JSON.parseArray(teacherListJson, Teacher::class.java)
+                        teacher_list_recycler_view.adapter = TeacherItemAdapter(teacherList)
+                        val classListJson = entity["classList"]
+                        val classList = JSON.parseArray(classListJson)
                     } else {
                         if (parseObj["status"].toString().toInt() == 11001) {
                             Toast.makeText(context, parseObj["message"] as String, Toast.LENGTH_SHORT).show();
@@ -67,6 +87,7 @@ class ClassFragment : BaseFragment(), View.OnClickListener {
                 }
             }))
         )
+
     }
 
     /**
@@ -94,6 +115,5 @@ class ClassFragment : BaseFragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
     }
-
 
 }
