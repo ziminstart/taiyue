@@ -25,7 +25,7 @@ class TeacherItemAdapter(private var teachers: List<Teacher>) :
     /**
      * 初始化老师
      */
-    lateinit var context: Context;
+    private lateinit var context: Context;
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InnerTeacher {
         this.context = parent.context
@@ -62,7 +62,7 @@ class TeacherItemAdapter(private var teachers: List<Teacher>) :
         holder.teacherContainerRelativeLayout.setOnClickListener { toChatAty(teacher) }
     }
 
-    fun toChatAty(teacher: Teacher) {
+    private fun toChatAty(teacher: Teacher) {
         val intent = Intent()
         intent.setClass(context, HomeActivity::class.java)
         intent.putExtra("teacherId", teacher.id)

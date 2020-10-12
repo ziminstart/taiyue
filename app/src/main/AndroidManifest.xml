@@ -17,6 +17,10 @@
             android:theme="@style/AppTheme"
             tools:ignore="Instantiatable"
             tools:targetApi="n">
+        <activity android:name=".view.bar.TitleBarView">
+        </activity>
+        <activity android:name=".view.activity.ChatActivity">
+        </activity>
         <activity android:name=".view.item.TeacherItemAdapter">
         </activity>
         <activity
