@@ -11,11 +11,11 @@ android {
     buildToolsVersion("30.0.2")
 
     defaultConfig {
-        applicationId = "com.fntj.aivoviceapp"
-        minSdkVersion(21)
-        targetSdkVersion(30)
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = AppConfig.applicationId
+        minSdkVersion(AppConfig.minSdkVersion)
+        targetSdkVersion(AppConfig.targetSdkVersion)
+        versionCode = AppConfig.versionCode
+        versionName = AppConfig.versionName
     }
 
     //签名类型
@@ -72,5 +72,16 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.3.72")
     implementation("androidx.core:core-ktx:1.3.1")
     implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation(project(":lib_base"))
 
+    if (!ModuleConfig.isApp) {
+        implementation(project(":mould_app_manager"))
+        implementation(project(":mould_constellation"))
+        implementation(project(":mould_developer"))
+        implementation(project(":mould_joke"))
+        implementation(project(":mould_map"))
+        implementation(project(":mould_setting"))
+        implementation(project(":mould_voice_setting"))
+        implementation(project(":mould_weather"))
+    }
 }
